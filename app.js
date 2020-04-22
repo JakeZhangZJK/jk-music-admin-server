@@ -9,7 +9,7 @@ const ENV = 'jk-icloud-iox3b'// 云环境ID
 
 // 跨域
 app.use(cors({
-    origin: ['http://localhost:9530'],
+    origin: ['http://localhost:9528'],
     credentials: true
 }))
 
@@ -26,12 +26,12 @@ app.use(async (ctx, next)=>{
 })
 
 const playlist = require('./controller/playlist.js')
-// const swiper = require('./controller/swiper.js')
-// const blog = require('./controller/blog.js')
+const swiper = require('./controller/swiper.js')
+const blog = require('./controller/blog.js')
 
 router.use('/playlist', playlist.routes())
-// router.use('/swiper', swiper.routes())
-// router.use('/blog', blog.routes())
+router.use('/swiper', swiper.routes())
+router.use('/blog', blog.routes())
 
 app.use(router.routes())
 app.use(router.allowedMethods())
